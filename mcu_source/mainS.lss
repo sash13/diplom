@@ -1,0 +1,784 @@
+
+mainS.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000048c  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000053  00800100  00800100  00000500  2**0
+                  ALLOC
+  2 .debug_aranges 00000020  00000000  00000000  00000500  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_pubnames 000000dc  00000000  00000000  00000520  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_info   000003ad  00000000  00000000  000005fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev 000001e8  00000000  00000000  000009a9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_line   0000038b  00000000  00000000  00000b91  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_frame  00000070  00000000  00000000  00000f1c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_str    00000186  00000000  00000000  00000f8c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_loc    00000125  00000000  00000000  00001112  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_ranges 00000048  00000000  00000000  00001237  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d4 e0       	ldi	r29, 0x04	; 4
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a3 35       	cpi	r26, 0x53	; 83
+  80:	b1 07       	cpc	r27, r17
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 27 02 	call	0x44e	; 0x44e <main>
+  88:	0c 94 44 02 	jmp	0x488	; 0x488 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <Servo_add>:
+        //usart_tx('v');
+        }
+}
+//============================================================================
+void Servo_add(u08 Number, u08 Pos)
+{
+  90:	cf 93       	push	r28
+  92:	df 93       	push	r29
+u08 i,k;
+SArray_def *tmp;
+Servo[Number].Position = Pos;
+  94:	90 e0       	ldi	r25, 0x00	; 0
+  96:	fc 01       	movw	r30, r24
+  98:	ee 0f       	add	r30, r30
+  9a:	ff 1f       	adc	r31, r31
+  9c:	ee 0f       	add	r30, r30
+  9e:	ff 1f       	adc	r31, r31
+  a0:	e8 0f       	add	r30, r24
+  a2:	f9 1f       	adc	r31, r25
+  a4:	e3 5f       	subi	r30, 0xF3	; 243
+  a6:	fe 4f       	sbci	r31, 0xFE	; 254
+  a8:	60 83       	st	Z, r22
+  aa:	41 e0       	ldi	r20, 0x01	; 1
+  ac:	51 e0       	ldi	r21, 0x01	; 1
+  ae:	07 c0       	rjmp	.+14     	; 0xbe <Servo_add+0x2e>
+for(i=1;i<MaxServo;i++)
+        {
+        for(k=i;((k>0)&&(Servo_sorted[k]->Position < Servo_sorted[k-1]->Position));k--)
+                {
+                tmp = Servo_sorted[k];                                  // Swap [k,k-1] 
+                Servo_sorted[k]=Servo_sorted[k-1];
+  b0:	d9 01       	movw	r26, r18
+  b2:	6d 93       	st	X+, r22
+  b4:	7c 93       	st	X, r23
+                Servo_sorted[k-1]=tmp;
+  b6:	d1 83       	std	Z+1, r29	; 0x01
+  b8:	c0 83       	st	Z, r28
+SArray_def *tmp;
+Servo[Number].Position = Pos;
+// Сортируем массив
+for(i=1;i<MaxServo;i++)
+        {
+        for(k=i;((k>0)&&(Servo_sorted[k]->Position < Servo_sorted[k-1]->Position));k--)
+  ba:	41 50       	subi	r20, 0x01	; 1
+  bc:	a1 f0       	breq	.+40     	; 0xe6 <Servo_add+0x56>
+  be:	84 2f       	mov	r24, r20
+  c0:	90 e0       	ldi	r25, 0x00	; 0
+  c2:	88 0f       	add	r24, r24
+  c4:	99 1f       	adc	r25, r25
+  c6:	9c 01       	movw	r18, r24
+  c8:	29 5b       	subi	r18, 0xB9	; 185
+  ca:	3e 4f       	sbci	r19, 0xFE	; 254
+  cc:	f9 01       	movw	r30, r18
+  ce:	c0 81       	ld	r28, Z
+  d0:	d1 81       	ldd	r29, Z+1	; 0x01
+  d2:	fc 01       	movw	r30, r24
+  d4:	eb 5b       	subi	r30, 0xBB	; 187
+  d6:	fe 4f       	sbci	r31, 0xFE	; 254
+  d8:	60 81       	ld	r22, Z
+  da:	71 81       	ldd	r23, Z+1	; 0x01
+  dc:	98 81       	ld	r25, Y
+  de:	db 01       	movw	r26, r22
+  e0:	8c 91       	ld	r24, X
+  e2:	98 17       	cp	r25, r24
+  e4:	28 f3       	brcs	.-54     	; 0xb0 <Servo_add+0x20>
+{
+u08 i,k;
+SArray_def *tmp;
+Servo[Number].Position = Pos;
+// Сортируем массив
+for(i=1;i<MaxServo;i++)
+  e6:	5f 5f       	subi	r21, 0xFF	; 255
+  e8:	45 2f       	mov	r20, r21
+  ea:	56 30       	cpi	r21, 0x06	; 6
+  ec:	41 f7       	brne	.-48     	; 0xbe <Servo_add+0x2e>
+                tmp = Servo_sorted[k];                                  // Swap [k,k-1] 
+                Servo_sorted[k]=Servo_sorted[k-1];
+                Servo_sorted[k-1]=tmp;
+                }
+        }
+}
+  ee:	df 91       	pop	r29
+  f0:	cf 91       	pop	r28
+  f2:	08 95       	ret
+
+000000f4 <Servo_sort>:
+//============================================================================
+void Servo_sort(void) 
+{
+  f4:	cf 93       	push	r28
+  f6:	df 93       	push	r29
+  f8:	41 e0       	ldi	r20, 0x01	; 1
+  fa:	51 e0       	ldi	r21, 0x01	; 1
+  fc:	07 c0       	rjmp	.+14     	; 0x10c <Servo_sort+0x18>
+for(i=1;i<MaxServo;i++)
+        {
+        for(k=i;((k>0)&&(Servo_sorted[k]->Position < Servo_sorted[k-1]->Position));k--)
+                {       
+                tmp = Servo_sorted[k];                                  // Swap [k,k-1] 
+                Servo_sorted[k]=Servo_sorted[k-1];
+  fe:	d9 01       	movw	r26, r18
+ 100:	6d 93       	st	X+, r22
+ 102:	7c 93       	st	X, r23
+                Servo_sorted[k-1]=tmp;
+ 104:	d1 83       	std	Z+1, r29	; 0x01
+ 106:	c0 83       	st	Z, r28
+u08 i,k;
+SArray_def *tmp;
+
+for(i=1;i<MaxServo;i++)
+        {
+        for(k=i;((k>0)&&(Servo_sorted[k]->Position < Servo_sorted[k-1]->Position));k--)
+ 108:	41 50       	subi	r20, 0x01	; 1
+ 10a:	a1 f0       	breq	.+40     	; 0x134 <Servo_sort+0x40>
+ 10c:	84 2f       	mov	r24, r20
+ 10e:	90 e0       	ldi	r25, 0x00	; 0
+ 110:	88 0f       	add	r24, r24
+ 112:	99 1f       	adc	r25, r25
+ 114:	9c 01       	movw	r18, r24
+ 116:	29 5b       	subi	r18, 0xB9	; 185
+ 118:	3e 4f       	sbci	r19, 0xFE	; 254
+ 11a:	f9 01       	movw	r30, r18
+ 11c:	c0 81       	ld	r28, Z
+ 11e:	d1 81       	ldd	r29, Z+1	; 0x01
+ 120:	fc 01       	movw	r30, r24
+ 122:	eb 5b       	subi	r30, 0xBB	; 187
+ 124:	fe 4f       	sbci	r31, 0xFE	; 254
+ 126:	60 81       	ld	r22, Z
+ 128:	71 81       	ldd	r23, Z+1	; 0x01
+ 12a:	98 81       	ld	r25, Y
+ 12c:	db 01       	movw	r26, r22
+ 12e:	8c 91       	ld	r24, X
+ 130:	98 17       	cp	r25, r24
+ 132:	28 f3       	brcs	.-54     	; 0xfe <Servo_sort+0xa>
+void Servo_sort(void) 
+{
+u08 i,k;
+SArray_def *tmp;
+
+for(i=1;i<MaxServo;i++)
+ 134:	5f 5f       	subi	r21, 0xFF	; 255
+ 136:	45 2f       	mov	r20, r21
+ 138:	56 30       	cpi	r21, 0x06	; 6
+ 13a:	41 f7       	brne	.-48     	; 0x10c <Servo_sort+0x18>
+                Servo_sorted[k]=Servo_sorted[k-1];
+                Servo_sorted[k-1]=tmp;
+                }
+
+        }
+}
+ 13c:	df 91       	pop	r29
+ 13e:	cf 91       	pop	r28
+ 140:	08 95       	ret
+
+00000142 <Servo_upd>:
+//============================================================================
+void Servo_upd(void)
+{
+ 142:	df 92       	push	r13
+ 144:	ef 92       	push	r14
+ 146:	ff 92       	push	r15
+ 148:	0f 93       	push	r16
+ 14a:	1f 93       	push	r17
+ 14c:	cf 93       	push	r28
+ 14e:	df 93       	push	r29
+ 150:	10 e0       	ldi	r17, 0x00	; 0
+ 152:	dd 24       	eor	r13, r13
+u08 i,j,k;
+ 
+for(i=0,k=0;i<MaxServo;i++,k++)
+{
+        if(Servo_sorted[i]->Position!=Servo_sorted[i+1]->Position)      //Если значения уникальные
+ 154:	e1 2e       	mov	r14, r17
+ 156:	ff 24       	eor	r15, r15
+ 158:	f7 01       	movw	r30, r14
+ 15a:	ee 0f       	add	r30, r30
+ 15c:	ff 1f       	adc	r31, r31
+ 15e:	e9 5b       	subi	r30, 0xB9	; 185
+ 160:	fe 4f       	sbci	r31, 0xFE	; 254
+ 162:	60 81       	ld	r22, Z
+ 164:	71 81       	ldd	r23, Z+1	; 0x01
+ 166:	db 01       	movw	r26, r22
+ 168:	9c 91       	ld	r25, X
+ 16a:	f7 01       	movw	r30, r14
+ 16c:	ee 0f       	add	r30, r30
+ 16e:	ff 1f       	adc	r31, r31
+ 170:	e7 5b       	subi	r30, 0xB7	; 183
+ 172:	fe 4f       	sbci	r31, 0xFE	; 254
+ 174:	01 90       	ld	r0, Z+
+ 176:	f0 81       	ld	r31, Z
+ 178:	e0 2d       	mov	r30, r0
+ 17a:	80 81       	ld	r24, Z
+ 17c:	cd 2d       	mov	r28, r13
+ 17e:	d0 e0       	ldi	r29, 0x00	; 0
+ 180:	98 17       	cp	r25, r24
+ 182:	a9 f0       	breq	.+42     	; 0x1ae <Servo_upd+0x6c>
+        {
+        ServoNextOCR[k] = Servo_sorted[i]->Position;                    // Записываем их как есть
+ 184:	fe 01       	movw	r30, r28
+ 186:	ee 5f       	subi	r30, 0xFE	; 254
+ 188:	fe 4f       	sbci	r31, 0xFE	; 254
+ 18a:	90 83       	st	Z, r25
+        ServoPortState[k+1] = Servo_sorted[i]->Bit;                     // И битмаску туда же
+ 18c:	cc 0f       	add	r28, r28
+ 18e:	dd 1f       	adc	r29, r29
+ 190:	cc 0f       	add	r28, r28
+ 192:	dd 1f       	adc	r29, r29
+ 194:	c1 5d       	subi	r28, 0xD1	; 209
+ 196:	de 4f       	sbci	r29, 0xFE	; 254
+ 198:	11 96       	adiw	r26, 0x01	; 1
+ 19a:	8d 91       	ld	r24, X+
+ 19c:	9d 91       	ld	r25, X+
+ 19e:	0d 90       	ld	r0, X+
+ 1a0:	bc 91       	ld	r27, X
+ 1a2:	a0 2d       	mov	r26, r0
+ 1a4:	88 83       	st	Y, r24
+ 1a6:	99 83       	std	Y+1, r25	; 0x01
+ 1a8:	aa 83       	std	Y+2, r26	; 0x02
+ 1aa:	bb 83       	std	Y+3, r27	; 0x03
+ 1ac:	3d c0       	rjmp	.+122    	; 0x228 <Servo_upd+0xe6>
+        }
+        else                                                            // Но если совпадает со следующим
+        {
+        ServoNextOCR[k] = Servo_sorted[i]->Position;                    // Позицию записываем
+ 1ae:	fe 01       	movw	r30, r28
+ 1b0:	ee 5f       	subi	r30, 0xFE	; 254
+ 1b2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1b4:	90 83       	st	Z, r25
+        ServoPortState[k+1] = Servo_sorted[i]->Bit;                     // Записываем битмаску
+ 1b6:	fe 01       	movw	r30, r28
+ 1b8:	ee 0f       	add	r30, r30
+ 1ba:	ff 1f       	adc	r31, r31
+ 1bc:	ee 0f       	add	r30, r30
+ 1be:	ff 1f       	adc	r31, r31
+ 1c0:	e1 5d       	subi	r30, 0xD1	; 209
+ 1c2:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1c4:	eb 01       	movw	r28, r22
+ 1c6:	89 81       	ldd	r24, Y+1	; 0x01
+ 1c8:	9a 81       	ldd	r25, Y+2	; 0x02
+ 1ca:	ab 81       	ldd	r26, Y+3	; 0x03
+ 1cc:	bc 81       	ldd	r27, Y+4	; 0x04
+ 1ce:	80 83       	st	Z, r24
+ 1d0:	91 83       	std	Z+1, r25	; 0x01
+ 1d2:	a2 83       	std	Z+2, r26	; 0x02
+ 1d4:	b3 83       	std	Z+3, r27	; 0x03
+ 1d6:	01 e0       	ldi	r16, 0x01	; 1
+ 
+        // И в цикле ищем все аналогичные позиции, склеивая их битмаски в одну.
+ 
+        for(j=1;(Servo_sorted[i]->Position == Servo_sorted[i+j]->Position)&&(i+j<MaxServo);j++)
+                {
+                ServoPortState[k+1] |= Servo_sorted[i+j]->Bit;
+ 1d8:	ef 01       	movw	r28, r30
+ 1da:	11 c0       	rjmp	.+34     	; 0x1fe <Servo_upd+0xbc>
+ 1dc:	88 81       	ld	r24, Y
+ 1de:	99 81       	ldd	r25, Y+1	; 0x01
+ 1e0:	aa 81       	ldd	r26, Y+2	; 0x02
+ 1e2:	bb 81       	ldd	r27, Y+3	; 0x03
+ 1e4:	21 81       	ldd	r18, Z+1	; 0x01
+ 1e6:	32 81       	ldd	r19, Z+2	; 0x02
+ 1e8:	43 81       	ldd	r20, Z+3	; 0x03
+ 1ea:	54 81       	ldd	r21, Z+4	; 0x04
+ 1ec:	82 2b       	or	r24, r18
+ 1ee:	93 2b       	or	r25, r19
+ 1f0:	a4 2b       	or	r26, r20
+ 1f2:	b5 2b       	or	r27, r21
+ 1f4:	88 83       	st	Y, r24
+ 1f6:	99 83       	std	Y+1, r25	; 0x01
+ 1f8:	aa 83       	std	Y+2, r26	; 0x02
+ 1fa:	bb 83       	std	Y+3, r27	; 0x03
+        ServoNextOCR[k] = Servo_sorted[i]->Position;                    // Позицию записываем
+        ServoPortState[k+1] = Servo_sorted[i]->Bit;                     // Записываем битмаску
+ 
+        // И в цикле ищем все аналогичные позиции, склеивая их битмаски в одну.
+ 
+        for(j=1;(Servo_sorted[i]->Position == Servo_sorted[i+j]->Position)&&(i+j<MaxServo);j++)
+ 1fc:	0f 5f       	subi	r16, 0xFF	; 255
+ 1fe:	97 01       	movw	r18, r14
+ 200:	20 0f       	add	r18, r16
+ 202:	31 1d       	adc	r19, r1
+ 204:	f9 01       	movw	r30, r18
+ 206:	ee 0f       	add	r30, r30
+ 208:	ff 1f       	adc	r31, r31
+ 20a:	e9 5b       	subi	r30, 0xB9	; 185
+ 20c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 20e:	01 90       	ld	r0, Z+
+ 210:	f0 81       	ld	r31, Z
+ 212:	e0 2d       	mov	r30, r0
+ 214:	db 01       	movw	r26, r22
+ 216:	9c 91       	ld	r25, X
+ 218:	80 81       	ld	r24, Z
+ 21a:	98 17       	cp	r25, r24
+ 21c:	19 f4       	brne	.+6      	; 0x224 <Servo_upd+0xe2>
+ 21e:	26 30       	cpi	r18, 0x06	; 6
+ 220:	31 05       	cpc	r19, r1
+ 222:	e4 f2       	brlt	.-72     	; 0x1dc <Servo_upd+0x9a>
+                {
+                ServoPortState[k+1] |= Servo_sorted[i+j]->Bit;
+                }
+        i+=j-1;                                         // Перед выходом корректируем индекс
+ 224:	11 50       	subi	r17, 0x01	; 1
+ 226:	10 0f       	add	r17, r16
+//============================================================================
+void Servo_upd(void)
+{
+u08 i,j,k;
+ 
+for(i=0,k=0;i<MaxServo;i++,k++)
+ 228:	1f 5f       	subi	r17, 0xFF	; 255
+ 22a:	d3 94       	inc	r13
+ 22c:	16 30       	cpi	r17, 0x06	; 6
+ 22e:	08 f4       	brcc	.+2      	; 0x232 <Servo_upd+0xf0>
+ 230:	91 cf       	rjmp	.-222    	; 0x154 <Servo_upd+0x12>
+                ServoPortState[k+1] |= Servo_sorted[i+j]->Bit;
+                }
+        i+=j-1;                                         // Перед выходом корректируем индекс
+        }                                               // На глубину зарывания в повторы
+}       
+ServoNextOCR[k] = 0xFF;                                 // В последний элемент вписываем заглушку FF.
+ 232:	ed 2d       	mov	r30, r13
+ 234:	f0 e0       	ldi	r31, 0x00	; 0
+ 236:	ee 5f       	subi	r30, 0xFE	; 254
+ 238:	fe 4f       	sbci	r31, 0xFE	; 254
+ 23a:	8f ef       	ldi	r24, 0xFF	; 255
+ 23c:	80 83       	st	Z, r24
+}
+ 23e:	df 91       	pop	r29
+ 240:	cf 91       	pop	r28
+ 242:	1f 91       	pop	r17
+ 244:	0f 91       	pop	r16
+ 246:	ff 90       	pop	r15
+ 248:	ef 90       	pop	r14
+ 24a:	df 90       	pop	r13
+ 24c:	08 95       	ret
+
+0000024e <TIMER2A_COMP_vect>:
+ 
+SArray_def Servo[MaxServo];
+SArray_def *Servo_sorted[MaxServo];
+//============================================================================
+ISR(TIMER2A_COMP_vect)                           // Прерывание по совпадению
+{
+ 24e:	1f 92       	push	r1
+ 250:	0f 92       	push	r0
+ 252:	0f b6       	in	r0, 0x3f	; 63
+ 254:	0f 92       	push	r0
+ 256:	11 24       	eor	r1, r1
+ 258:	2f 93       	push	r18
+ 25a:	3f 93       	push	r19
+ 25c:	4f 93       	push	r20
+ 25e:	5f 93       	push	r21
+ 260:	6f 93       	push	r22
+ 262:	7f 93       	push	r23
+ 264:	8f 93       	push	r24
+ 266:	9f 93       	push	r25
+ 268:	af 93       	push	r26
+ 26a:	bf 93       	push	r27
+ 26c:	ef 93       	push	r30
+ 26e:	ff 93       	push	r31
+if (servo_state)                                // Если не нулевое состояние то
+ 270:	20 91 01 01 	lds	r18, 0x0101
+ 274:	22 23       	and	r18, r18
+ 276:	09 f4       	brne	.+2      	; 0x27a <TIMER2A_COMP_vect+0x2c>
+ 278:	3f c0       	rjmp	.+126    	; 0x2f8 <TIMER2A_COMP_vect+0xaa>
+        {
+        OCR2A = ServoNextOCR[servo_state];       // В регистр сравнения кладем следующий интервал
+ 27a:	e2 2f       	mov	r30, r18
+ 27c:	f0 e0       	ldi	r31, 0x00	; 0
+ 27e:	df 01       	movw	r26, r30
+ 280:	ae 5f       	subi	r26, 0xFE	; 254
+ 282:	be 4f       	sbci	r27, 0xFE	; 254
+ 284:	8c 91       	ld	r24, X
+ 286:	80 93 b3 00 	sts	0x00B3, r24
+
+        happens.someshit=ServoPortState[servo_state];
+ 28a:	ee 0f       	add	r30, r30
+ 28c:	ff 1f       	adc	r31, r31
+ 28e:	ee 0f       	add	r30, r30
+ 290:	ff 1f       	adc	r31, r31
+ 292:	e5 5d       	subi	r30, 0xD5	; 213
+ 294:	fe 4f       	sbci	r31, 0xFE	; 254
+ 296:	80 81       	ld	r24, Z
+ 298:	91 81       	ldd	r25, Z+1	; 0x01
+ 29a:	a2 81       	ldd	r26, Z+2	; 0x02
+ 29c:	b3 81       	ldd	r27, Z+3	; 0x03
+ 29e:	80 93 09 01 	sts	0x0109, r24
+ 2a2:	90 93 0a 01 	sts	0x010A, r25
+ 2a6:	a0 93 0b 01 	sts	0x010B, r26
+ 2aa:	b0 93 0c 01 	sts	0x010C, r27
+//      PORTB &= ~ServoPortState[servo_state];  // Сбрасываем биты в порту, в соответствии с маской в массиве масок.
+    PORTB &= ~happens.anyshit[0];
+ 2ae:	95 b1       	in	r25, 0x05	; 5
+ 2b0:	80 91 09 01 	lds	r24, 0x0109
+ 2b4:	80 95       	com	r24
+ 2b6:	89 23       	and	r24, r25
+ 2b8:	85 b9       	out	0x05, r24	; 5
+    //PORTC &= ~happens.anyshit[1];
+    //PORTD &= ~happens.anyshit[2];               
+
+
+        servo_state++;                          // Увеличиваем состояние автомата
+ 2ba:	2f 5f       	subi	r18, 0xFF	; 255
+ 2bc:	20 93 01 01 	sts	0x0101, r18
+ 
+        if (OCR2A == 0xFF)                               // Если значение сравнения равно FF значит это заглушка
+ 2c0:	80 91 b3 00 	lds	r24, 0x00B3
+ 2c4:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2c6:	59 f5       	brne	.+86     	; 0x31e <TIMER2A_COMP_vect+0xd0>
+                {                               // И мы достигли конца таблицы. И пора обнулить автомат
+                servo_state = 0;                        // Выставляем нулевое состояние.
+ 2c8:	10 92 01 01 	sts	0x0101, r1
+ 
+                TCNT2 = 105;                    // Программируем задержку 
+ 2cc:	89 e6       	ldi	r24, 0x69	; 105
+ 2ce:	80 93 b2 00 	sts	0x00B2, r24
+                TCCR2A &= 0b11111000;            // Сбрасываем предделитель таймера
+ 2d2:	80 91 b0 00 	lds	r24, 0x00B0
+ 2d6:	88 7f       	andi	r24, 0xF8	; 248
+ 2d8:	80 93 b0 00 	sts	0x00B0, r24
+                TCCR2A |= 0x05;                  // Устанавливаем предделитель 
+ 2dc:	80 91 b0 00 	lds	r24, 0x00B0
+ 2e0:	85 60       	ori	r24, 0x05	; 5
+ 2e2:	80 93 b0 00 	sts	0x00B0, r24
+ 
+                if (servo_need_update)          // Если поступил приказ обновить таблицы автомата
+ 2e6:	80 91 00 01 	lds	r24, 0x0100
+ 2ea:	88 23       	and	r24, r24
+ 2ec:	c1 f0       	breq	.+48     	; 0x31e <TIMER2A_COMP_vect+0xd0>
+                        {
+                        Servo_upd();            // Обновляем таблицы.
+ 2ee:	0e 94 a1 00 	call	0x142	; 0x142 <Servo_upd>
+                        servo_need_update = 0;  // Сбрасываем сигнал обновления.
+ 2f2:	10 92 00 01 	sts	0x0100, r1
+ 2f6:	13 c0       	rjmp	.+38     	; 0x31e <TIMER2A_COMP_vect+0xd0>
+                        }
+                }
+        }
+else                                            // Нулевое состояние автомата. Новый цикл
+        {
+        OCR2A = ServoNextOCR[servo_state];               // Берем первую выдержку.
+ 2f8:	80 91 02 01 	lds	r24, 0x0102
+ 2fc:	80 93 b3 00 	sts	0x00B3, r24
+ 
+        TCCR2A &= 0b11111000;                    // Сбрасываем предделитель
+ 300:	80 91 b0 00 	lds	r24, 0x00B0
+ 304:	88 7f       	andi	r24, 0xF8	; 248
+ 306:	80 93 b0 00 	sts	0x00B0, r24
+        TCCR2A |= 0x04;                          // Предделитель 
+ 30a:	80 91 b0 00 	lds	r24, 0x00B0
+ 30e:	84 60       	ori	r24, 0x04	; 4
+ 310:	80 93 b0 00 	sts	0x00B0, r24
+        PORTB = 0xFF;
+ 314:	8f ef       	ldi	r24, 0xFF	; 255
+ 316:	85 b9       	out	0x05, r24	; 5
+        //PORTC = 0xFF;                           // Выставялем все сервоканалы в 1 - начало импульса
+        //PORTD = 0xFF;
+        servo_state++;                          // Увеличиваем состояние конечного автомата. 
+ 318:	81 e0       	ldi	r24, 0x01	; 1
+ 31a:	80 93 01 01 	sts	0x0101, r24
+        //usart_tx('v');
+        }
+}
+ 31e:	ff 91       	pop	r31
+ 320:	ef 91       	pop	r30
+ 322:	bf 91       	pop	r27
+ 324:	af 91       	pop	r26
+ 326:	9f 91       	pop	r25
+ 328:	8f 91       	pop	r24
+ 32a:	7f 91       	pop	r23
+ 32c:	6f 91       	pop	r22
+ 32e:	5f 91       	pop	r21
+ 330:	4f 91       	pop	r20
+ 332:	3f 91       	pop	r19
+ 334:	2f 91       	pop	r18
+ 336:	0f 90       	pop	r0
+ 338:	0f be       	out	0x3f, r0	; 63
+ 33a:	0f 90       	pop	r0
+ 33c:	1f 90       	pop	r1
+ 33e:	18 95       	reti
+
+00000340 <Servo_Init>:
+ServoNextOCR[k] = 0xFF;                                 // В последний элемент вписываем заглушку FF.
+}
+//============================================================================
+void Servo_Init(void)
+{
+Servo_sorted[0]   = &Servo[0];
+ 340:	8d e0       	ldi	r24, 0x0D	; 13
+ 342:	91 e0       	ldi	r25, 0x01	; 1
+ 344:	90 93 48 01 	sts	0x0148, r25
+ 348:	80 93 47 01 	sts	0x0147, r24
+Servo_sorted[1]   = &Servo[1];
+ 34c:	05 96       	adiw	r24, 0x05	; 5
+ 34e:	90 93 4a 01 	sts	0x014A, r25
+ 352:	80 93 49 01 	sts	0x0149, r24
+Servo_sorted[2]   = &Servo[2];
+ 356:	05 96       	adiw	r24, 0x05	; 5
+ 358:	90 93 4c 01 	sts	0x014C, r25
+ 35c:	80 93 4b 01 	sts	0x014B, r24
+Servo_sorted[3]   = &Servo[3];
+ 360:	05 96       	adiw	r24, 0x05	; 5
+ 362:	90 93 4e 01 	sts	0x014E, r25
+ 366:	80 93 4d 01 	sts	0x014D, r24
+Servo_sorted[4]   = &Servo[4];
+ 36a:	05 96       	adiw	r24, 0x05	; 5
+ 36c:	90 93 50 01 	sts	0x0150, r25
+ 370:	80 93 4f 01 	sts	0x014F, r24
+Servo_sorted[5]   = &Servo[5];
+ 374:	05 96       	adiw	r24, 0x05	; 5
+ 376:	90 93 52 01 	sts	0x0152, r25
+ 37a:	80 93 51 01 	sts	0x0151, r24
+Servo_sorted[6]   = &Servo[6];
+ 37e:	05 96       	adiw	r24, 0x05	; 5
+ 380:	90 93 54 01 	sts	0x0154, r25
+ 384:	80 93 53 01 	sts	0x0153, r24
+Servo_sorted[12]  = &Servo[12];
+Servo_sorted[13]  = &Servo[13];
+Servo_sorted[14]  = &Servo[14];
+Servo_sorted[15]  = &Servo[15];  */
+//PORT B
+Servo[0].Bit   = 0b000000000000000000000001;
+ 388:	81 e0       	ldi	r24, 0x01	; 1
+ 38a:	90 e0       	ldi	r25, 0x00	; 0
+ 38c:	a0 e0       	ldi	r26, 0x00	; 0
+ 38e:	b0 e0       	ldi	r27, 0x00	; 0
+ 390:	80 93 0e 01 	sts	0x010E, r24
+ 394:	90 93 0f 01 	sts	0x010F, r25
+ 398:	a0 93 10 01 	sts	0x0110, r26
+ 39c:	b0 93 11 01 	sts	0x0111, r27
+Servo[1].Bit   = 0b000000000000000000000010;
+ 3a0:	82 e0       	ldi	r24, 0x02	; 2
+ 3a2:	90 e0       	ldi	r25, 0x00	; 0
+ 3a4:	a0 e0       	ldi	r26, 0x00	; 0
+ 3a6:	b0 e0       	ldi	r27, 0x00	; 0
+ 3a8:	80 93 13 01 	sts	0x0113, r24
+ 3ac:	90 93 14 01 	sts	0x0114, r25
+ 3b0:	a0 93 15 01 	sts	0x0115, r26
+ 3b4:	b0 93 16 01 	sts	0x0116, r27
+Servo[2].Bit   = 0b000000000000000000000100;
+ 3b8:	84 e0       	ldi	r24, 0x04	; 4
+ 3ba:	90 e0       	ldi	r25, 0x00	; 0
+ 3bc:	a0 e0       	ldi	r26, 0x00	; 0
+ 3be:	b0 e0       	ldi	r27, 0x00	; 0
+ 3c0:	80 93 18 01 	sts	0x0118, r24
+ 3c4:	90 93 19 01 	sts	0x0119, r25
+ 3c8:	a0 93 1a 01 	sts	0x011A, r26
+ 3cc:	b0 93 1b 01 	sts	0x011B, r27
+Servo[3].Bit   = 0b000000000000000000001000;
+ 3d0:	88 e0       	ldi	r24, 0x08	; 8
+ 3d2:	90 e0       	ldi	r25, 0x00	; 0
+ 3d4:	a0 e0       	ldi	r26, 0x00	; 0
+ 3d6:	b0 e0       	ldi	r27, 0x00	; 0
+ 3d8:	80 93 1d 01 	sts	0x011D, r24
+ 3dc:	90 93 1e 01 	sts	0x011E, r25
+ 3e0:	a0 93 1f 01 	sts	0x011F, r26
+ 3e4:	b0 93 20 01 	sts	0x0120, r27
+Servo[4].Bit   = 0b000000000000000000010000;
+ 3e8:	80 e1       	ldi	r24, 0x10	; 16
+ 3ea:	90 e0       	ldi	r25, 0x00	; 0
+ 3ec:	a0 e0       	ldi	r26, 0x00	; 0
+ 3ee:	b0 e0       	ldi	r27, 0x00	; 0
+ 3f0:	80 93 22 01 	sts	0x0122, r24
+ 3f4:	90 93 23 01 	sts	0x0123, r25
+ 3f8:	a0 93 24 01 	sts	0x0124, r26
+ 3fc:	b0 93 25 01 	sts	0x0125, r27
+Servo[5].Bit   = 0b000000000000000000100000;
+ 400:	80 e2       	ldi	r24, 0x20	; 32
+ 402:	90 e0       	ldi	r25, 0x00	; 0
+ 404:	a0 e0       	ldi	r26, 0x00	; 0
+ 406:	b0 e0       	ldi	r27, 0x00	; 0
+ 408:	80 93 27 01 	sts	0x0127, r24
+ 40c:	90 93 28 01 	sts	0x0128, r25
+ 410:	a0 93 29 01 	sts	0x0129, r26
+ 414:	b0 93 2a 01 	sts	0x012A, r27
+Servo[12].Bit  = 0b000100000000000000000000;
+Servo[13].Bit  = 0b001000000000000000000000;
+Servo[14].Bit  = 0b010000000000000000000000;
+Servo[15].Bit  = 0b100000000000000000000000;  */
+
+Servo[0].Position   = 0;
+ 418:	10 92 0d 01 	sts	0x010D, r1
+Servo[1].Position   = 0;
+ 41c:	10 92 12 01 	sts	0x0112, r1
+Servo[2].Position   = 0;
+ 420:	10 92 17 01 	sts	0x0117, r1
+Servo[3].Position   = 0;
+ 424:	10 92 1c 01 	sts	0x011C, r1
+Servo[4].Position   = 0;
+ 428:	10 92 21 01 	sts	0x0121, r1
+Servo[5].Position   = 0;
+ 42c:	10 92 26 01 	sts	0x0126, r1
+Servo[12].Position  = 127;
+Servo[13].Position  = 127;
+Servo[14].Position  = 127;
+Servo[15].Position  = 127; */
+
+Servo_sort();
+ 430:	0e 94 7a 00 	call	0xf4	; 0xf4 <Servo_sort>
+Servo_upd();
+ 434:	0e 94 a1 00 	call	0x142	; 0x142 <Servo_upd>
+
+TIMSK2 |= 1<<OCIE2A;      
+ 438:	e0 e7       	ldi	r30, 0x70	; 112
+ 43a:	f0 e0       	ldi	r31, 0x00	; 0
+ 43c:	80 81       	ld	r24, Z
+ 43e:	82 60       	ori	r24, 0x02	; 2
+ 440:	80 83       	st	Z, r24
+TCCR2A |= 0x05;
+ 442:	e0 eb       	ldi	r30, 0xB0	; 176
+ 444:	f0 e0       	ldi	r31, 0x00	; 0
+ 446:	80 81       	ld	r24, Z
+ 448:	85 60       	ori	r24, 0x05	; 5
+ 44a:	80 83       	st	Z, r24
+}
+ 44c:	08 95       	ret
+
+0000044e <main>:
+                                }
+}}*/
+//============================================================================
+int main (void) {
+
+ DDRB=0b00111111;
+ 44e:	8f e3       	ldi	r24, 0x3F	; 63
+ 450:	84 b9       	out	0x04, r24	; 4
+PORTB=0b00000000;
+ 452:	15 b8       	out	0x05, r1	; 5
+      //  UCSRB = (1<<RXEN) | (1<<TXEN);
+      //  UCSRC = (1<<URSEL) | (1<<UCSZ1) | (1<<UCSZ0); 
+
+
+//Servo_Init();
+DDRD |= PORTD6;
+ 454:	8a b1       	in	r24, 0x0a	; 10
+ 456:	86 60       	ori	r24, 0x06	; 6
+ 458:	8a b9       	out	0x0a, r24	; 10
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 45a:	28 ec       	ldi	r18, 0xC8	; 200
+ 45c:	30 e0       	ldi	r19, 0x00	; 0
+//asm("sei");                     
+while (1) {
+                   PORTD |= PORTD6;
+ 45e:	8b b1       	in	r24, 0x0b	; 11
+ 460:	86 60       	ori	r24, 0x06	; 6
+ 462:	8b b9       	out	0x0b, r24	; 11
+ 464:	80 e1       	ldi	r24, 0x10	; 16
+ 466:	97 e2       	ldi	r25, 0x27	; 39
+ 468:	f9 01       	movw	r30, r18
+ 46a:	31 97       	sbiw	r30, 0x01	; 1
+ 46c:	f1 f7       	brne	.-4      	; 0x46a <main+0x1c>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 46e:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 470:	d9 f7       	brne	.-10     	; 0x468 <main+0x1a>
+    _delay_ms(1000);
+    PORTD &= ~PORTD6;
+ 472:	8b b1       	in	r24, 0x0b	; 11
+ 474:	89 7f       	andi	r24, 0xF9	; 249
+ 476:	8b b9       	out	0x0b, r24	; 11
+ 478:	80 e1       	ldi	r24, 0x10	; 16
+ 47a:	97 e2       	ldi	r25, 0x27	; 39
+ 47c:	f9 01       	movw	r30, r18
+ 47e:	31 97       	sbiw	r30, 0x01	; 1
+ 480:	f1 f7       	brne	.-4      	; 0x47e <main+0x30>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 482:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 484:	d9 f7       	brne	.-10     	; 0x47c <main+0x2e>
+ 486:	eb cf       	rjmp	.-42     	; 0x45e <main+0x10>
+
+00000488 <_exit>:
+ 488:	f8 94       	cli
+
+0000048a <__stop_program>:
+ 48a:	ff cf       	rjmp	.-2      	; 0x48a <__stop_program>

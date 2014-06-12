@@ -1,0 +1,238 @@
+   1               		.file	"adc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	analogRead
+  18               	analogRead:
+  19               	.LFB8:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 8093 7C00 		sts 124,r24
+  26               	.LM3:
+  27 0004 8091 7C00 		lds r24,124
+  28               	.LVL1:
+  29 0008 8064      		ori r24,lo8(64)
+  30 000a 8093 7C00 		sts 124,r24
+  31               	.LM4:
+  32 000e 8091 7C00 		lds r24,124
+  33 0012 8F7D      		andi r24,lo8(-33)
+  34 0014 8093 7C00 		sts 124,r24
+  35               	.LM5:
+  36 0018 8091 7A00 		lds r24,122
+  37 001c 8760      		ori r24,lo8(7)
+  38 001e 8093 7A00 		sts 122,r24
+  39               	.LM6:
+  40 0022 8091 7A00 		lds r24,122
+  41 0026 8068      		ori r24,lo8(-128)
+  42 0028 8093 7A00 		sts 122,r24
+  43               	.LM7:
+  44 002c 8091 7A00 		lds r24,122
+  45 0030 8064      		ori r24,lo8(64)
+  46 0032 8093 7A00 		sts 122,r24
+  47               	.L2:
+  48               	.LM8:
+  49 0036 8091 7A00 		lds r24,122
+  50 003a 86FD      		sbrc r24,6
+  51 003c 00C0      		rjmp .L2
+  52               	.LM9:
+  53 003e 9091 7800 		lds r25,120
+  54               	.LM10:
+  55 0042 8091 7900 		lds r24,121
+  56 0046 382F      		mov r19,r24
+  57 0048 20E0      		ldi r18,lo8(0)
+  58 004a 290F      		add r18,r25
+  59 004c 311D      		adc r19,__zero_reg__
+  60               	.LM11:
+  61 004e C901      		movw r24,r18
+  62               	/* epilogue start */
+  63 0050 0895      		ret
+  64               	.LFE8:
+  66               	.global	getFeedback
+  68               	getFeedback:
+  69               	.LFB7:
+  70               	.LM12:
+  71               	.LVL2:
+  72 0052 FF92      		push r15
+  73 0054 0F93      		push r16
+  74 0056 1F93      		push r17
+  75 0058 CF93      		push r28
+  76 005a DF93      		push r29
+  77               	/* prologue: function */
+  78               	/* frame size = 0 */
+  79 005c F82E      		mov r15,r24
+  80               	.LM13:
+  81 005e C0E0      		ldi r28,lo8(reading)
+  82 0060 D0E0      		ldi r29,hi8(reading)
+  83               	.LBB15:
+  84               	.LBB16:
+  85               	.LBB17:
+  86               	.LBB18:
+  87               	.LBB19:
+  88               	.LM14:
+  89 0062 00E7      		ldi r16,lo8(6000)
+  90 0064 17E1      		ldi r17,hi8(6000)
+  91               	.LVL3:
+  92               	.L6:
+  93               	.LBE19:
+  94               	.LBE18:
+  95               	.LBE17:
+  96               	.LBE16:
+  97               	.LM15:
+  98 0066 8F2D      		mov r24,r15
+  99 0068 0E94 0000 		call analogRead
+ 100 006c 8993      		st Y+,r24
+ 101 006e 9993      		st Y+,r25
+ 102               	.LBB23:
+ 103               	.LBB22:
+ 104               	.LBB21:
+ 105               	.LBB20:
+ 106               	.LM16:
+ 107 0070 C801      		movw r24,r16
+ 108               	.LVL4:
+ 109               	/* #APP */
+ 110               	 ;  105 "c:/winavr/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 111 0072 0197      		1: sbiw r24,1
+ 112 0074 01F4      		brne 1b
+ 113               	 ;  0 "" 2
+ 114               	/* #NOAPP */
+ 115               	.LBE20:
+ 116               	.LBE21:
+ 117               	.LBE22:
+ 118               	.LBE23:
+ 119               	.LM17:
+ 120 0076 80E0      		ldi r24,hi8(reading+40)
+ 121 0078 C030      		cpi r28,lo8(reading+40)
+ 122 007a D807      		cpc r29,r24
+ 123               	.LVL5:
+ 124 007c 01F4      		brne .L6
+ 125 007e 7091 0000 		lds r23,test
+ 126 0082 6091 0000 		lds r22,test+1
+ 127 0086 40E0      		ldi r20,lo8(0)
+ 128 0088 50E0      		ldi r21,hi8(0)
+ 129 008a 00C0      		rjmp .L7
+ 130               	.L10:
+ 131               	.LM18:
+ 132 008c 722F      		mov r23,r18
+ 133 008e 632F      		mov r22,r19
+ 134               	.L12:
+ 135               	.LBE15:
+ 136               	.LBB24:
+ 137               	.LM19:
+ 138 0090 8081      		ld r24,Z
+ 139 0092 9181      		ldd r25,Z+1
+ 140 0094 2281      		ldd r18,Z+2
+ 141 0096 3381      		ldd r19,Z+3
+ 142 0098 2817      		cp r18,r24
+ 143 009a 3907      		cpc r19,r25
+ 144 009c 04F0      		brlt .L8
+ 145 009e 872F      		mov r24,r23
+ 146 00a0 962F      		mov r25,r22
+ 147 00a2 9C01      		movw r18,r24
+ 148 00a4 00C0      		rjmp .L9
+ 149               	.L8:
+ 150               	.LM20:
+ 151 00a6 9383      		std Z+3,r25
+ 152 00a8 8283      		std Z+2,r24
+ 153               	.LM21:
+ 154 00aa 3183      		std Z+1,r19
+ 155 00ac 2083      		st Z,r18
+ 156 00ae 40E0      		ldi r20,lo8(0)
+ 157 00b0 50E0      		ldi r21,hi8(0)
+ 158               	.L9:
+ 159 00b2 3296      		adiw r30,2
+ 160               	.LM22:
+ 161 00b4 80E0      		ldi r24,hi8(reading+40)
+ 162 00b6 E030      		cpi r30,lo8(reading+40)
+ 163 00b8 F807      		cpc r31,r24
+ 164 00ba 01F4      		brne .L10
+ 165 00bc 722F      		mov r23,r18
+ 166 00be 632F      		mov r22,r19
+ 167               	.L7:
+ 168               	.LBE24:
+ 169               	.LM23:
+ 170 00c0 4130      		cpi r20,1
+ 171 00c2 5105      		cpc r21,__zero_reg__
+ 172 00c4 01F0      		breq .L11
+ 173 00c6 E0E0      		ldi r30,lo8(reading)
+ 174 00c8 F0E0      		ldi r31,hi8(reading)
+ 175 00ca 41E0      		ldi r20,lo8(1)
+ 176 00cc 50E0      		ldi r21,hi8(1)
+ 177 00ce 00C0      		rjmp .L12
+ 178               	.L11:
+ 179 00d0 7093 0000 		sts test,r23
+ 180 00d4 6093 0000 		sts test+1,r22
+ 181 00d8 5093 0000 		sts (done)+1,r21
+ 182 00dc 4093 0000 		sts done,r20
+ 183 00e0 E0E0      		ldi r30,lo8(reading+12)
+ 184 00e2 F0E0      		ldi r31,hi8(reading+12)
+ 185 00e4 20E0      		ldi r18,lo8(0)
+ 186 00e6 30E0      		ldi r19,hi8(0)
+ 187               	.L13:
+ 188               	.LBB25:
+ 189               	.LM24:
+ 190 00e8 8191      		ld r24,Z+
+ 191 00ea 9191      		ld r25,Z+
+ 192 00ec 280F      		add r18,r24
+ 193 00ee 391F      		adc r19,r25
+ 194               	.LM25:
+ 195 00f0 80E0      		ldi r24,hi8(reading+28)
+ 196 00f2 E030      		cpi r30,lo8(reading+28)
+ 197 00f4 F807      		cpc r31,r24
+ 198 00f6 01F4      		brne .L13
+ 199 00f8 3093 0000 		sts (mean)+1,r19
+ 200 00fc 2093 0000 		sts mean,r18
+ 201               	.LBE25:
+ 202               	.LM26:
+ 203 0100 C901      		movw r24,r18
+ 204 0102 68E0      		ldi r22,lo8(8)
+ 205 0104 70E0      		ldi r23,hi8(8)
+ 206 0106 0E94 0000 		call __divmodhi4
+ 207 010a CB01      		movw r24,r22
+ 208 010c 6093 0000 		sts result,r22
+ 209 0110 9093 0000 		sts result+1,r25
+ 210               	/* epilogue start */
+ 211               	.LM27:
+ 212 0114 DF91      		pop r29
+ 213 0116 CF91      		pop r28
+ 214 0118 1F91      		pop r17
+ 215 011a 0F91      		pop r16
+ 216 011c FF90      		pop r15
+ 217               	.LVL6:
+ 218 011e 0895      		ret
+ 219               	.LFE7:
+ 221               		.comm servo_adc_val,6,1
+ 222               		.comm ADCvalue,2,1
+ 223               		.comm reading,40,1
+ 224               		.comm result,2,1
+ 225               		.comm done,2,1
+ 226               		.comm test,2,1
+ 227               		.comm mean,2,1
+ 260               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:2      *ABS*:0000003f __SREG__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:3      *ABS*:0000003e __SP_H__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:4      *ABS*:0000003d __SP_L__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:5      *ABS*:00000034 __CCP__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:18     .text:00000000 analogRead
+C:\Users\user\AppData\Local\Temp/ccjeRSNc.s:68     .text:00000052 getFeedback
+                            *COM*:00000028 reading
+                            *COM*:00000002 test
+                            *COM*:00000002 done
+                            *COM*:00000002 mean
+                            *COM*:00000002 result
+                            *COM*:00000006 servo_adc_val
+                            *COM*:00000002 ADCvalue
+
+UNDEFINED SYMBOLS
+__divmodhi4
+__do_clear_bss
