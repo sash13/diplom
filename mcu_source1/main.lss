@@ -13,19 +13,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   4 .debug_pubnames 0000038b  00000000  00000000  000017a6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000c9d  00000000  00000000  00001b31  2**0
+  5 .debug_info   00000c9e  00000000  00000000  00001b31  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000558  00000000  00000000  000027ce  2**0
+  6 .debug_abbrev 00000567  00000000  00000000  000027cf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000a4c  00000000  00000000  00002d26  2**0
+  7 .debug_line   00000a4c  00000000  00000000  00002d36  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000180  00000000  00000000  00003774  2**2
+  8 .debug_frame  00000180  00000000  00000000  00003784  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000039c  00000000  00000000  000038f4  2**0
+  9 .debug_str    0000039c  00000000  00000000  00003904  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000031c  00000000  00000000  00003c90  2**0
+ 10 .debug_loc    0000031c  00000000  00000000  00003ca0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000090  00000000  00000000  00003fac  2**0
+ 11 .debug_ranges 00000090  00000000  00000000  00003fbc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -696,7 +696,9 @@ if (servo_state)                                // Если не нулевое 
      3d0:	80 95       	com	r24
      3d2:	89 23       	and	r24, r25
      3d4:	85 b9       	out	0x05, r24	; 5
-
+            
+            //if(TCNT1 > ServoNextOCR[servo_state])
+             //  TCNT1 = ServoNextOCR[servo_state-1];
 
         servo_state++;                          // Увеличиваем состояние автомата
      3d6:	2f 5f       	subi	r18, 0xFF	; 255

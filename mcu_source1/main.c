@@ -16,7 +16,9 @@ if (servo_state)                                // Если не нулевое 
             OCR1B = ServoNextOCR[servo_state];       // В регистр сравнения кладем следующий интервал
 
             PORTB &= ~ServoPortState[servo_state];  // Сбрасываем биты в порту, в соответствии с маской в массиве масок.          
-
+            
+            //if(TCNT1 > ServoNextOCR[servo_state])
+             //  TCNT1 = ServoNextOCR[servo_state-1];
 
         servo_state++;                          // Увеличиваем состояние автомата
  
@@ -34,7 +36,7 @@ if (servo_state)                                // Если не нулевое 
                         Servo_upd();            // Обновляем таблицы.
                         servo_need_update = 0;  // Сбрасываем сигнал обновления.
                         }
-                }
+                } 
         }
 else                                            // Нулевое состояние автомата. Новый цикл
         {

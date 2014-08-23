@@ -660,18 +660,18 @@ LOAD c:/winavr/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
  .debug_pubnames
                 0x0000021c      0x16f uart.o
 
-.debug_info     0x00000000      0xc9d
+.debug_info     0x00000000      0xc9e
  *(.debug_info)
  .debug_info    0x00000000      0x256 adc.o
- .debug_info    0x00000256      0x646 main.o
- .debug_info    0x0000089c      0x401 uart.o
+ .debug_info    0x00000256      0x647 main.o
+ .debug_info    0x0000089d      0x401 uart.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x558
+.debug_abbrev   0x00000000      0x567
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x10d adc.o
- .debug_abbrev  0x0000010d      0x2b0 main.o
- .debug_abbrev  0x000003bd      0x19b uart.o
+ .debug_abbrev  0x0000010d      0x2bf main.o
+ .debug_abbrev  0x000003cc      0x19b uart.o
 
 .debug_line     0x00000000      0xa4c
  *(.debug_line)

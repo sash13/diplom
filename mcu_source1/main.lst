@@ -948,7 +948,7 @@
  977 062a 569A      		sbi 42-32,6
  978               	.LM112:
  979               	/* #APP */
- 980               	 ;  199 "main.c" 1
+ 980               	 ;  201 "main.c" 1
  981 062c 7894      		sei
  982               	 ;  0 "" 2
  983               	.LM113:
@@ -1317,39 +1317,39 @@
  1475               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:2      *ABS*:0000003f __SREG__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:3      *ABS*:0000003e __SP_H__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:4      *ABS*:0000003d __SP_L__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:5      *ABS*:00000034 __CCP__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:18     .text:00000000 Servo_add
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:2      *ABS*:0000003f __SREG__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:3      *ABS*:0000003e __SP_H__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:4      *ABS*:0000003d __SP_L__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:5      *ABS*:00000034 __CCP__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:18     .text:00000000 Servo_add
                             *COM*:00000012 Servo
                             *COM*:0000000c Servo_sorted
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:101    .text:00000070 Servo_sort
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:168    .text:000000cc Servo_upd
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1313   .bss:00000002 servo_on
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:101    .text:00000070 Servo_sort
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:168    .text:000000cc Servo_upd
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1313   .bss:00000002 servo_on
                             *COM*:0000000e ServoNextOCR
                             *COM*:00000007 ServoPortState
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:325    .text:000001be __vector_12
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1307   .bss:00000001 servo_state
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1301   .bss:00000000 servo_need_update
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:447    .text:000002a6 servo_flush
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:464    .text:000002b2 map
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:559    .text:00000344 Servo_Init
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:724    .text:00000490 servo_write
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:806    .text:00000516 angle0to180
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1347   .bss:00000004 angle_new
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1353   .data:00000028 up_down
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:902    .text:000005dc prog1
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:914    .text:000005de prog2
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:934    .text:000005e0 main
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1325   .data:0000000c uart_output
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1335   .data:0000001a uart_input
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:325    .text:000001be __vector_12
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1307   .bss:00000001 servo_state
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1301   .bss:00000000 servo_need_update
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:447    .text:000002a6 servo_flush
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:464    .text:000002b2 map
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:559    .text:00000344 Servo_Init
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:724    .text:00000490 servo_write
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:806    .text:00000516 angle0to180
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1347   .bss:00000004 angle_new
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1353   .data:00000028 up_down
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:902    .text:000005dc prog1
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:914    .text:000005de prog2
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:934    .text:000005e0 main
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1325   .data:0000000c uart_output
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1335   .data:0000001a uart_input
                             *COM*:00000002 i
                             *COM*:00000002 adc_val
                             *COM*:00000006 servo_adc_val
-C:\Users\user\AppData\Local\Temp/cc0gays0.s:1319   .bss:00000003 mode
+C:\Users\user\AppData\Local\Temp/cc59PQ9z.s:1319   .bss:00000003 mode
                             *COM*:00000002 custom_delay
 
 UNDEFINED SYMBOLS
